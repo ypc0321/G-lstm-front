@@ -5,12 +5,16 @@ export default [
     layout: false,
     routes: [
       {
-        path: "/docs",
-        component: "docs",
-      },
-      {
         path: "/home",
         component: "home",
+      },
+      {
+        path: "/detection",
+        component: "detection",
+      },
+      {
+        path: "/finishoff",
+        component: "finishoff",
       },
     ],
   },

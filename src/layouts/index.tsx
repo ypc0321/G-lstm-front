@@ -1,39 +1,59 @@
-import { Link, Outlet } from "umi";
+import { Outlet, useNavigate } from "umi";
 
 import React from "react";
-import { Layout as AntdLayout, Menu } from "antd";
+import { Layout as AntdLayout, Menu, Dropdown, Button } from "antd";
+import type { MenuProps } from "antd";
 import {
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
+  DashboardOutlined,
+  SmileOutlined,
+  CheckCircleOutlined,
 } from "@ant-design/icons";
 
 import "./index.less";
 
 const Layout: React.FC = () => {
+  let navigate = useNavigate();
+  const items: MenuProps["items"] = [
+    {
+      key: "logout",
+      label: "退出登录",
+    },
+  ];
+
+  const onClick: MenuProps["onClick"] = (e) => {
+    console.log("click", e);
+    navigate("./" + e.key);
+  };
+
   return (
     <AntdLayout className="layout">
-      <AntdLayout.Header className="header">Header</AntdLayout.Header>
+      <AntdLayout.Header className="header">
+        <div>软件缺陷预测</div>
+        <Dropdown menu={{ items }} placement="bottom">
+          <div>用户名</div>
+        </Dropdown>
+      </AntdLayout.Header>
       <AntdLayout>
         <AntdLayout.Sider className="sider">
           <Menu
             mode="inline"
-            defaultSelectedKeys={["1"]}
+            onClick={onClick}
+            defaultSelectedKeys={["home"]}
             items={[
               {
-                key: "1",
-                icon: <UserOutlined />,
-                label: "nav 1",
+                key: "home",
+                icon: <SmileOutlined />,
+                label: "首页",
               },
               {
-                key: "2",
-                icon: <VideoCameraOutlined />,
-                label: "nav 2",
+                key: "detection",
+                icon: <DashboardOutlined />,
+                label: "检测",
               },
               {
-                key: "3",
-                icon: <UploadOutlined />,
-                label: "nav 3",
+                key: "finishoff",
+                icon: <CheckCircleOutlined />,
+                label: "结果",
               },
             ]}
           />

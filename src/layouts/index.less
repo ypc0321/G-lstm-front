@@ -5,13 +5,20 @@
   height: 100%; // 设置高度为视口高度
 
   .header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
     background-color: #f0f0f0;
     text-align: center;
+    padding-left: 10px;
+    >div:first-child {
+      font-size: 1.5rem;
+    }
   }
 
   //侧边栏样式
   .sider {
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     width: 200px; // 设置宽度
   }
 

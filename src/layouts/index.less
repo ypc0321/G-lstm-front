@@ -1,10 +1,32 @@
-.navs {
-  ul {
-    padding: 0;
-    list-style: none;
-    display: flex;
+// 为layout组件写样式
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%; // 设置高度为视口高度
+
+  .header {
+    background-color: #f0f0f0;
+    text-align: center;
   }
-  li {
-    margin-right: 1em;
+
+  //侧边栏样式
+  .sider {
+    background-color: #f0f0f0;
+    width: 200px; // 设置宽度
+  }
+
+  // 内容区样式
+  .content {
+    flex: 1; // 内容区域占据剩余空间
+    padding: 20px;
+    overflow-y: auto; // 垂直滚动条
+  }
+
+  //footer样式
+  .footer {
+    background-color: #f0f0f0;
+    text-align: center;
+    font-size: 1.5rem;
+    height: 70px;
   }
 }

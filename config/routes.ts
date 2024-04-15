@@ -5,6 +5,10 @@ export default [
     layout: false,
     routes: [
       {
+        path: "/",
+        redirect: "/home",
+      },
+      {
         path: "/home",
         component: "home",
       },

@@ -1,6 +1,6 @@
-import { Outlet, useNavigate } from "umi";
+import { Outlet, useNavigate, useLocation } from "umi";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Layout as AntdLayout, Menu, Dropdown, Button } from "antd";
 import type { MenuProps } from "antd";
 import {
@@ -12,7 +12,9 @@ import {
 import "./index.less";
 
 const Layout: React.FC = () => {
+  const [selectedKeys, setSelectedKeys] = useState<string>("");
   let navigate = useNavigate();
+  let location = useLocation();
   const items: MenuProps["items"] = [
     {
       key: "logout",
@@ -20,8 +22,11 @@ const Layout: React.FC = () => {
     },
   ];
 
+  useEffect(() => {
+    setSelectedKeys(location.pathname.slice(1));
+  }, [location.pathname]);
+
   const onClick: MenuProps["onClick"] = (e) => {
-    console.log("click", e);
     navigate("./" + e.key);
   };
 
@@ -39,6 +44,7 @@ const Layout: React.FC = () => {
             mode="inline"
             onClick={onClick}
             defaultSelectedKeys={["home"]}
+            selectedKeys={[selectedKeys]}
             items={[
               {
                 key: "home",

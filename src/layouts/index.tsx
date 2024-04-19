@@ -68,9 +68,6 @@ const Layout: React.FC = () => {
           <Outlet />
         </AntdLayout.Content>
       </AntdLayout>
-      <AntdLayout.Footer className="footer">
-        Software defect prediction system
-      </AntdLayout.Footer>
     </AntdLayout>
   );
 };
